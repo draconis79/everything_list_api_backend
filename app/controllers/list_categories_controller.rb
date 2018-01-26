@@ -5,13 +5,13 @@ class ListCategoriesController < ApplicationController
   # GET / list_categories
   def index
     @list_categories = ListCategory.all
-    render json: @list_categories
+    render json: @list_categories.to_json(include: [:user, :list_item)
   end
 
 
   # GET /list_categories/1
   def show
-    render json: @list_categories
+    render json: @list_categories.to_json(include: [:user, :list_item)
   end
 
 
