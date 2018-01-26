@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create([
+              { username: 'mandy', password_digest: '123' },
+              { username: 'joshua', password_digest: '123' },
+              { username: 'adam', password_digest: '123' },
+              { username: 'liz', password_digest: '123' }
+            ])
+
+ListCategory.create([
+                      { title: 'Grocery', content: 'eggs' },
+                      { title: 'Packing', content: 'pjs' },
+                      { title: 'Costco', content: 'chicken broth' },
+                      { title: 'Gus', content: 'challah bread' }
+                    ])
