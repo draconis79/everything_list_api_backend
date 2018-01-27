@@ -4,14 +4,14 @@ class ListCategoriesController < ApplicationController
 
   # GET / list_categories
   def index
-    @list_categories = ListCategory.all
-    render json: @list_categories.to_json(include: [:user, :list_item)
+    @list_categories = User.find(params[:user_id]).list_categories
+    render json: @list_categories.to_json(include: [:user, :list_item])
   end
 
 
   # GET /list_categories/1
   def show
-    render json: @list_categories.to_json(include: [:user, :list_item)
+    render json: @list_categories.to_json(include: [:user, :list_item])
   end
 
 
@@ -42,6 +42,19 @@ end
     @list_category.destroy
   end
 
+  # TASK /list_categories
+  def task
+    @list_categories = User.find(params[:user_id]).list_categories.where('completed': false)
+    render json: @list_categories.to_json(include: [:user, :list_item])
+  end
+
+
+  # COMPLETED /list_categories
+  def completed
+    @list_categories = User.find(params[:user_id]).list_categories.where('completed': true)
+    render json: @list_categories.to_json(include: [:user, :list_item])
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -51,6 +64,6 @@ end
 
   # USER REQUIREMENT
     def list_category_params
-      params.require(:list_category).permit(:user_id, :list_item_id)
+      params.require(:list_category).permit(:user_id, :list_item_id, :completed)
     end
 end
