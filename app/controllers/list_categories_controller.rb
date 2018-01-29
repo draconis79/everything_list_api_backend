@@ -20,7 +20,7 @@ class ListCategoriesController < ApplicationController
     @list_category = ListCategory.new(list_category_params)
 
     if @list_category.save
-      render json: @list_category, status: :created, location: @list_category
+      render json: @list_category, status: :created
     else
       render json: @list_category.errors, status: :unprocessable_entity
     end
