@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_token, except: [:login, :create, :show]
-  before_action :authorize_user, except: [:login, :create, :index, :show]
+  before_action :authenticate_token, except: [:login, :create]
+  before_action :authorize_user, except: [:login, :create, :index]
 
   # GET / users
   def index
@@ -44,9 +44,9 @@ end
       token = create_token(user.id, user.username)
       render json: { status: 200, token: token, user: user }
     else
-      render json: { status: 401, message: 'Unauthorized' }
+      render json: { status: 401, message: "Unauthorized" }
     end
-end
+  end
 
 
   private
@@ -57,7 +57,7 @@ end
 
     def payload(id, username)
       {
-        exp: (Time.now + 800.minutes).to_i,
+        exp: (Time.now + 5.minutes).to_i,
         iat: Time.now.to_i,
         iss: ENV['JWT_ISSUER'],
         user: {
