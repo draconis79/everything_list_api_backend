@@ -1,4 +1,4 @@
 class ListCategories < ApplicationRecord
-  has_many :list_items
-  has_many :users
+  belongs_to :list_item
+  belongs_to :user
 end

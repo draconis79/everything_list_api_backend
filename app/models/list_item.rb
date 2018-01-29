@@ -1,4 +1,4 @@
 class ListItem < ApplicationRecord
-  belongs_to :users
-  belongs_to :list_categories
+  has_many :users, through: :list_categories
+  has_many :list_categories
 end
