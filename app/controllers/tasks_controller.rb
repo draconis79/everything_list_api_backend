@@ -2,15 +2,15 @@ class TasksController < ApplicationController
 
   # GET /TASKS
   def index
-    @tasks = Task.all.reverse
+    @tasks = Task.all
 
-    render json: @tasks
+    render json: @tasks.to_json(include: :lists)
   end
 
   # POST /TASKS
   def create
     @task = Task.new(task_params)
-    @task.category_id = params[:category_id]
+    @task.list_id = params[:list_id]
 
 
     if @task.save
