@@ -18,4 +18,8 @@ class ListsController < ApplicationController
     def set_list
       @list = List.find(params[:id])
     end
+
+    def list_params
+      params.require(:task).permit(:name, :task)
+    end
 end
