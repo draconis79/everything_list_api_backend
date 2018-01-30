@@ -1,42 +1,21 @@
-class TasksController < ApplicationController
+class CategoriesController < ApplicationController
+  before_action :set_category, only: [:show]
 
-  # GET /TASKS
+  # GET /CATEGORIES
   def index
-    @tasks = Task.all.reverse
+    @categories = Category.all
 
-    render json: @tasks
+    render json: @categories.to_json(include: :tasks)
   end
 
-  # POST /TASKS
-  def create
-    @task = Task.new(task_params)
-    @task.category_id = params[:category_id]
-
-
-    if @task.save
-      render json: @task, status: :created
-    else
-      render json: @task.errors, status: :unprocessable_entity
-    end
-  end
-
-  def update
-    find_task.update(task_params)
-    render(json: { task: find_task })
-  end
-
-  def destroy
-    find_task.destroy
-    render(status: 204)
+  # GET /categories/1
+  def show
+    render json: @category.to_json(include: :tasks)
   end
 
   private
-
-  def find_task
-    @task ||= Task.find(params[:id])
-  end
-    # Only allow a trusted parameter "white list" through.
-    def task_params
-      params.require(:task).permit(:name, :task)
+    # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = Category.find(params[:id])
     end
 end

@@ -13,9 +13,9 @@ User.create([
               { username: 'liz', password_digest: '123' }
             ])
 
-Task.create([
-              { name: 'Grocery', name: 'eggs' },
-              { name: 'Packing', name: 'pjs' },
-              { name: 'Costco', name: 'chicken broth' },
-              { name: 'Gus', name: 'challah bread' }
+List.create([
+              { name: 'Grocery', task: 'eggs' },
+              { name: 'Packing', task: 'pjs' },
+              { name: 'Costco', task: 'chicken broth' },
+              { name: 'Gus', task: 'challah bread' }
             ])
