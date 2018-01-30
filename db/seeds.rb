@@ -13,9 +13,9 @@ User.create([
               { username: 'liz', password_digest: '123' }
             ])
 
-ListCategory.create([
-                      { title: 'Grocery', content: 'eggs' },
-                      { title: 'Packing', content: 'pjs' },
-                      { title: 'Costco', content: 'chicken broth' },
-                      { title: 'Gus', content: 'challah bread' }
-                    ])
+ListItem.create([
+              { title: 'Grocery', content: 'eggs' },
+              { title: 'Packing', content: 'pjs' },
+              { title: 'Costco', content: 'chicken broth' },
+              { title: 'Gus', content: 'challah bread' }
+            ])
